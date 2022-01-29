@@ -5,7 +5,7 @@
 
 ただし、課題の都合上、作成しない画面や機能があるので、ECサイトの完成には至りません。
 
-各機能の要件については、[Docbase](https://docbase.io/posts/981614/sharing/7f6083d2-d3c4-47d6-9332-d219db66aa16)を参照して下さい。
+各機能の要件については、[Docbase](https://docbase.io/posts/981614/sharing/c6bf1283-d32e-4ba8-bc43-a8c869bd3f4e)を参照して下さい。
 
 ## branch名
 1. 認証機能 → 1_feature_login
