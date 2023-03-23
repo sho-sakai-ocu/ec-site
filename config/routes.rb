@@ -1,25 +1,27 @@
 Rails.application.routes.draw do
-
-  get 'items' => 'items#index'
-  get 'items/:id' => 'items#show'
+  
+  scope module: :public do
+    root to: 'homes#top'
+    get   'about'                => 'homes#about'
+    get   'customers/my_page'    => 'customers#show'
+    get   'customers/edit'       => 'customers#edit'
+    patch 'customers/'           => 'customers#update'
+    get   'customers/confirm'    => 'customers#confirm'
+    patch 'customers/withdrawal' => 'customers#withdrawal'
+    get   'items'                => 'items#index'
+    get   'items/:id'            => 'items#show'
+    get   'cart_items'           => 'cart_items#index'
+  end
 
   namespace :admin do
     root to: 'homes#top'
+    resources :items, except: [:destroy]
   end
 
-  namespace :customers do
-    root to: 'homes#top'
-    get   'about'      => 'homes#about'
-    get   'my_page'    => 'customers#show'
-    get   'edit'       => 'customers#edit'
-    patch '/'          => 'customers#update'
-    get   'confirm'    => 'customers#confirm'
-    patch 'withdrawal' => 'customers#withdrawal'
-  end
 
   devise_for :customers,skip: [:passwords], controllers: {
-    registrations: "customers/registrations",
-    sessions: 'customers/sessions'
+    registrations: "public/registrations",
+    sessions: 'public/sessions'
   }
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
