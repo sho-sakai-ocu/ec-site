@@ -7,6 +7,59 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: 'z@z',
-    password: 'asdfgh',
+    email: "a@a",
+    password: "aaaaaa"
 )
+
+Genre.create!(
+   name: 'プリン'
+)
+
+Genre.create!(
+   name: '焼き菓子'
+)
+
+Genre.create!(
+   name: 'ケーキ'
+)
+
+Item.create!(
+  genre_id: 1,
+  name: '商品名1',
+  introduction: '商品説明1',
+  price: 1000,
+  is_active: true
+)
+
+Item.create!(
+  genre_id: 2,
+  name: '商品名2',
+  introduction: '商品説明2',
+  price: 1500,
+  is_active: false
+)
+
+Item.create!(
+  genre_id: 3,
+  name: '商品名3',
+  introduction: '商品説明3',
+  price: 1000,
+  is_active: true
+)
+
+Item.create!(
+  genre_id: 1,
+  name: '商品名4',
+  introduction: '商品説明4',
+  price: 1000,
+  is_active: false
+)
+
+item1 = Item.find(1)
+item1.image.attach(io: File.open('./app/assets/images/test1.jpg'), filename: 'test1.jpg')
+item2 = Item.find(2)
+item2.image.attach(io: File.open('./app/assets/images/test2.jpg'), filename: 'test2.jpg')
+item3 = Item.find(3)
+item3.image.attach(io: File.open('./app/assets/images/test3.jpg'), filename: 'test3.jpg')
+item4 = Item.find(4)
+item4.image.attach(io: File.open('./app/assets/images/test4.jpg'), filename: 'test4.jpg')
