@@ -52,7 +52,7 @@ Item.create!(
   name: '商品名4',
   introduction: '商品説明4',
   price: 1000,
-  is_active: false
+  is_active: true
 )
 
 item1 = Item.find(1)

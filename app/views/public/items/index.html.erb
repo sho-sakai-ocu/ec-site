@@ -1,9 +1,11 @@
-<h4>商品一覧 (全<%= @items.length %>件)</h4>
+<h4>商品一覧 (全<%= @items.where(is_active: true).length %>件)</h4>
 <div class="d-flex mt-3">
   <% @items.each do |item| %>
-    <div class="mr-3">
-      <%= image_tag item.get_image(150, 150) %>
-      <p><%= item.name %><br>￥<%= item.price %></p>
-    </div>
+    <% if item.is_active %>
+      <div class="mr-3">
+        <%= image_tag item.get_image(150, 150) %>
+        <p><%= item.name %><br>￥<%= item.price %></p>
+      </div>
+    <% end %>
   <% end %>
 </div>
