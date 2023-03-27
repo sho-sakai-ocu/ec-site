@@ -26,7 +26,7 @@ Genre.create!(
 Item.create!(
   genre_id: 1,
   name: '商品名1',
-  introduction: '商品説明1',
+  introduction: 'おいしいです。おいしいです。おいしいです。おいしいです。おいしいです。',
   price: 1000,
   is_active: true
 )
@@ -34,7 +34,7 @@ Item.create!(
 Item.create!(
   genre_id: 2,
   name: '商品名2',
-  introduction: '商品説明2',
+  introduction: 'おいしいです。おいしいです。おいしいです。おいしいです。おいしいです。',
   price: 1500,
   is_active: false
 )
@@ -42,7 +42,7 @@ Item.create!(
 Item.create!(
   genre_id: 3,
   name: '商品名3',
-  introduction: '商品説明3',
+  introduction: 'おいしいです。おいしいです。おいしいです。おいしいです。おいしいです。',
   price: 1000,
   is_active: true
 )
@@ -50,7 +50,7 @@ Item.create!(
 Item.create!(
   genre_id: 1,
   name: '商品名4',
-  introduction: '商品説明4',
+  introduction: 'おいしいです。おいしいです。おいしいです。おいしいです。おいしいです。',
   price: 1000,
   is_active: true
 )

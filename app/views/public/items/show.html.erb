@@ -1,1 +1,14 @@
-<h4>商品詳細ページ</h4>
+<div class="d-flex">
+  <%= image_tag @item.get_image(200, 200) %>
+  <div class="ml-5">
+    <h4><%= @item.name %></h4>
+    <p><%= @item.introduction %></p>
+    <p>￥<%= @item.price %>（税込）</p>
+    <%= form_with model: @cart_item do |f| %>
+
+     <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "個数を選択" %>
+
+     <%= f.submit 'カートに入れる'%>
+  <% end %>
+  </div>
+</div>

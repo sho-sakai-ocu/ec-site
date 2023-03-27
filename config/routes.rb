@@ -8,9 +8,9 @@ Rails.application.routes.draw do
     patch 'customers/'           => 'customers#update'
     get   'customers/confirm'    => 'customers#confirm'
     patch 'customers/withdrawal' => 'customers#withdrawal'
-    get   'items'                => 'items#index'
-    get   'items/:id'            => 'items#show'
-    get   'cart_items'           => 'cart_items#index'
+    resources :items, only: [:index, :show]
+    resources :cart_items, only: [:index, :create, :update, :destroy]
+    delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
   end
 
   namespace :admin do
