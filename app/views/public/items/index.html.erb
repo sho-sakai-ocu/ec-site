@@ -4,7 +4,7 @@
     <% if item.is_active %>
       <div class="mr-3">
         <%= image_tag item.get_image(150, 150) %>
-        <p><%= item.name %><br>￥<%= item.price %></p>
+        <p><%= item.name %><br>￥<%= (item.price * 1.10).round.to_s(:delimited, delimiter: ',') %></p>
       </div>
     <% end %>
   <% end %>
