@@ -1,14 +1,17 @@
 <div class="d-flex">
-  <%= image_tag @item.get_image(200, 200) %>
+  <%= image_tag @item.get_image(300, 300) %>
   <div class="ml-5">
-    <h4><%= @item.name %></h4>
-    <p><%= @item.introduction %></p>
-    <p>￥<%= @item.price %>（税込）</p>
-    <%= form_with model: @cart_item do |f| %>
+  <h4><%= @item.name %></h4>
+  <p><%= @item.introduction %></p>
+  <p>￥<%= (@item.price * 1.10).round.to_s(:delimited, delimiter: ',') %>（税込）</p>
 
-     <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "個数を選択" %>
+  <%= form_with model: @cart_item do |f| %>
+    <%= f.hidden_field :item_id, :value => params[:id] %>
 
-     <%= f.submit 'カートに入れる'%>
+    <%= f.select :amount, [[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], include_blank: "個数を選択" %>
+
+    <%= f.submit 'カートに入れる'%>
   <% end %>
+
   </div>
 </div>

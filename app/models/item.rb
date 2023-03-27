@@ -19,4 +19,7 @@ class Item < ApplicationRecord
     image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def add_tax(price)
+    (price * 1.10).round.to_s(:delimited, delimiter: ',')
+  end
 end

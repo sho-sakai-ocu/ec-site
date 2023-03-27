@@ -1,5 +1,7 @@
 <h4>ショッピングカート</h4>
 
+<%= link_to "カートを空にする", cart_items_destroy_all_path, method: :delete, data: {confirm: "本当に削除しますか？"}, class:"btn btn-danger bt-sm" %>
+
 <table class="table mt-4">
   <thead>
     <tr>
@@ -11,17 +13,30 @@
     </tr>
   </thead>
   <tbody>
-    <% @cart_items.each do |cart_item| %>
+    <% @cart_items.each do |c| %>
       <tr>
         <td>
-          <%= image_tag Item.find(cart_item.item_id).get_image(80, 80), class:"mr-3" %>
-          <%= Item.find(cart_item.item_id).name %>
+          <%= image_tag c.item.get_image(80, 80), class:"mr-3" %>
+          <%= c.item.name %>
         </td>
-        <td><%= Item.find(cart_item.item_id).price %></td>
-        <td><%= cart_item.amount %></td>
-        <td><%= Item.find(cart_item.item_id).price * cart_item.amount %></td>
-        <td><%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class:"btn btn-danger bt-sm" %></td>
+        <td><%= c.add_price(c.item.price, 1) %></td>
+        <td>
+          <%= form_with model: c do |f| %>
+            <%= f.select :amount, options_for_select([[1, 1], [2, 2], [3, 3], [4, 4], [5, 5]], {selected: c.amount} ) %>
+            <%= f.hidden_field :cart_item_id, :value => c.id %>
+            <%= f.submit '変更'%>
+          <% end %>
+        </td>
+        <td><%= c.add_price(c.item.price, c.amount) %></td>
+        <td><%= link_to "削除する", cart_item_path(c.id), method: :delete, class:"btn btn-danger bt-sm" %></td>
       </tr>
+      <% @sum += c.item.price * c.amount %>
     <% end %>
   </tbody>
 </table>
+
+<%= link_to "買い物を続ける", items_path, class:"btn btn-primary bt-sm" %>
+
+<p>合計金額　<%= (@sum * 1.10).round %>円</p>
+
+<%= link_to "情報入力に進む", cart_items_path, class:"btn btn-success bt-sm" %>
