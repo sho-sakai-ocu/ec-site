@@ -9,9 +9,12 @@ Rails.application.routes.draw do
     get   'customers/confirm'    => 'customers#confirm'
     patch 'customers/withdrawal' => 'customers#withdrawal'
     delete 'cart_items/destroy_all' => 'cart_items#destroy_all'
+    get 'orders/confirm' => 'orders#confirm'
+    get 'orders/completed' => 'orders#completed'
     resources :items, only: [:index, :show]
     resources :cart_items, only: [:index, :create, :update, :destroy]
     resources :addresses, only: [:index, :edit, :create, :update, :destroy]
+    resources :orders, only: [:new, :index, :create, :show]
   end
 
   namespace :admin do

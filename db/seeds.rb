@@ -7,33 +7,40 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 
 Admin.create!(
-    email: "a@a",
-    password: "aaaaaa"
+  email: "a@a",
+  password: "aaaaaa"
 )
 
 Customer.create!(
-    last_name: "山田",
-    first_name: "太郎",
-    last_name_kana: "yamada",
-    first_name_kana: "taro",
-    email: "b@b",
-    password: "aaaaaa",
-    postal_code: "1234567",
-    address: "東京都新宿区○○○○",
-    telephone_number: "123456789",
-    is_deleted: false
+  last_name: "山田",
+  first_name: "太郎",
+  last_name_kana: "yamada",
+  first_name_kana: "taro",
+  email: "b@b",
+  password: "aaaaaa",
+  postal_code: "1234567",
+  address: "東京都新宿区○○○○",
+  telephone_number: "123456789",
+  is_deleted: false
+)
+
+Address.create!(
+  customer_id: 1,
+  name: "鈴木太郎",
+  postal_code: "7654321",
+  address: "大阪府大阪市北区○○○○"
 )
 
 Genre.create!(
-   name: 'プリン'
+  name: 'プリン'
 )
 
 Genre.create!(
-   name: '焼き菓子'
+  name: '焼き菓子'
 )
 
 Genre.create!(
-   name: 'ケーキ'
+  name: 'ケーキ'
 )
 
 Item.create!(

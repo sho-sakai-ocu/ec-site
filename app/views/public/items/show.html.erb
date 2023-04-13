@@ -3,7 +3,7 @@
   <div class="ml-5">
   <h4><%= @item.name %></h4>
   <p><%= @item.introduction %></p>
-  <p>￥<%= (@item.price * 1.10).round.to_s(:delimited, delimiter: ',') %>（税込）</p>
+  <p>￥<%= @item.price_including_tax %>（税込）</p>
 
   <%= form_with model: @cart_item do |f| %>
     <%= f.hidden_field :item_id, :value => params[:id] %>
