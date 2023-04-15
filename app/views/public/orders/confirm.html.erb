@@ -43,7 +43,7 @@
   </div>
 </div>
 
-<p>支払方法  <%= Order.payment_methods_i18n[@order.payment_method] %></p>
+<p>支払方法  <%= @order.payment_method_i18n %></p>
 <p>お届け先  <%= @order.full_address %></p>
 
 <%= form_with model: @order, url: orders_path, method: :post, class:"mt-4" do |f| %>
