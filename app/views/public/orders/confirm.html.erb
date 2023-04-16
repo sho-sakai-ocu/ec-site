@@ -54,5 +54,5 @@
   <%= f.hidden_field :shipping_cost, :value => @order.shipping_cost %>
   <%= f.hidden_field :total_payment, :value => (@sum.to_i * 1.10).to_i + @order.shipping_cost %>
   <%= f.hidden_field :payment_method, :value => @order.payment_method %>
-  <%= f.submit "注文を確定する", class: "submit-btn" %>
+  <%= f.submit "注文を確定する", data: {confirm: "注文を確定してもよろしいですか？"}, class: "submit-btn" %>
 <% end %>
