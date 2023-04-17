@@ -1,6 +1,11 @@
 class Admin::ItemsController < ApplicationController
   def index
-    @items = Item.all
+    word = params[:word]
+    if word.present?
+      @items = Item.where("name LIKE?","%#{word}%")
+    else
+      @items = Item.all
+    end
   end
 
   def new
