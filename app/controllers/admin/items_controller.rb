@@ -1,8 +1,8 @@
 class Admin::ItemsController < ApplicationController
   def index
-    word = params[:word]
-    if word.present?
-      @items = Item.where("name LIKE?","%#{word}%")
+    @word = params[:word]
+    if @word.present?
+      @items = Item.where("name LIKE?","%#{@word}%")
     else
       @items = Item.all
     end

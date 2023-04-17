@@ -41,14 +41,10 @@
               <li><%= link_to "ログイン", new_customer_session_path,class: 'nav-link text-light' %></li>
             <% end %>
             <li>
-              <%# <form class="d-flex">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-secondary ml-2" type="submit">Search</button>
-              </form> %>
               <%= form_with url: admin_items_path, local: true, method: :get do |f| %>
-  <%= f.text_field :word %>
-  <%= f.submit "検索", class: "btn btn-primary" %>
-<% end %>
+                <%= f.text_field :word %>
+                <%= f.submit "検索", class: "btn btn-primary" %>
+              <% end %>
             </li>
           </ul>
         </div>
