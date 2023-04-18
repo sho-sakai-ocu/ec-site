@@ -1,14 +1,30 @@
 <h4>商品一覧 (全<%= @items.where(is_active: true).length %>件)</h4>
 
-<div class="d-flex mt-3">
-  <% @items.each do |item| %>
-    <% if item.is_active %>
-      <div class="mr-3">
-        <%= link_to item_path(item.id) do %>
-          <%= image_tag item.get_image(180, 180) %>
-        <% end %>
-        <p><%= item.name %><br>￥<%= item.price_including_tax %></p>
-      </div>
+<div class="row">
+  <div class="border border-dark col-md-3">
+    <ul class="mb-0">
+      <li class="list-unstyled">ジャンル検索</li>
+      <% @genres.each do |genre| %>
+        <li class="list-unstyled">
+          <%= form_with url: items_path, local: true, method: :get do |f| %>
+            <%= f.hidden_field :id, :value => genre.id %>
+            <%= f.submit genre.name, class:"border-0 bg-transparent" %>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="d-flex mt-3 col-md-8 offset-md-1">
+    <% @items.each do |item| %>
+      <% if item.is_active %>
+        <div class="mr-3">
+          <%= link_to item_path(item.id) do %>
+            <%= image_tag item.get_image(180, 180) %>
+          <% end %>
+          <p><%= item.name %><br>￥<%= item.price_including_tax %></p>
+        </div>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
